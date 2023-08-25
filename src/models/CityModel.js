@@ -1,14 +1,24 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const citySchema = new mongoose.Schema({
-  name: String,
-  imageUrl: String,
+const citySchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
   location: {
-    country: String,
-    city: String,
+    country: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
   },
 });
 
-const CityModel = mongoose.model('CityModel', citySchema);
+const CityModel = model('cityModel', citySchema);
 
 module.exports = CityModel;

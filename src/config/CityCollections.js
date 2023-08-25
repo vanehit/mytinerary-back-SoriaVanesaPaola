@@ -1,20 +1,35 @@
+const express = require('express');
+const connectDB = require('./dataBase'); 
+const CityModel = require('../models/cityModel');
 const fs = require('fs');
 const path = require('path');
-const { dbConnectionPromise } = require('./app'); // Importamos la promesa de conexión desde app.js
-const CityModel = require('../models/CityModel');
 
-app.use('/public', express.static(path.join(__dirname, '/public')));
+// Ruta al archivo JSON
+const dataFilePath = path.join(__dirname, '../../data.json');
 
-const citiesData = JSON.parse(fs.readFileSync(citiesFilePath, 'utf8'));
+// Esto Lee el archivo JSON y parsea los datos
+const rawData = fs.readFileSync(dataFilePath, 'utf8');
+const citiesData = JSON.parse(rawData);
 
 const CityCollections = async () => {
   try {
-    await dbConnectionPromise;
+    await connectDB();
 
-    await CityModel.insertMany(citiesData);
-    console.log('Colecciones de ciudades insertadas exitosamente');
+    for (const data of citiesData) {
+      const city = new CityModel({
+        name: data.name,
+        imageUrl: data.imageUrl,
+        location: {
+          country: data.location.country,
+          city: data.location.city,
+        },
+      });
+      await city.save();
+    }
+
+    console.log('City collections successfully inserted');
   } catch (err) {
-    console.error('Error al insertar las colecciones de ciudades:', err);
+    console.error('Error inserting city collections:', err);
   }
 };
 

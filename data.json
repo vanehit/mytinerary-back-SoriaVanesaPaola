@@ -1,63 +1,62 @@
 [
-    {
-      "name": "New York",
-      "imageUrl": "/public/images/newYork.jpg",
-      "location": { "country": "USA", "city": "New York" }
-    },
-    {
-      "name": "Paris",
-      "imageUrl": "/public/images/paris.jpg",
-      "location": { "country": "France", "city": "Paris" }
-    },
-    {
-      "name": "Tokyo",
-      "imageUrl": "/public/images/tokio.jpg",
-      "location": { "country": "Japan", "city": "Tokyo" }
-    },
-    {
-      "name": "London",
-      "imageUrl": "/public/images/london.jpg",
-      "location": { "country": "United Kingdom", "city": "London" }
-    },
-    {
-      "name": "Sydney",
-      "imageUrl": "/public/images/sydney.jpg",
-      "location": { "country": "Australia", "city": "Sydney" }
-    },
-    {
-      "name": "Rome",
-      "imageUrl": "/public/images/roma.jpg",
-      "location": { "country": "Italy", "city": "Rome" }
-    },
-    {
-      "name": "San Francisco",
-      "imageUrl": "/public/images/sanFrancisco.jpg",
-      "location": { "country": "USA", "city": "San Francisco" }
-    },
-    {
-      "name": "Buenos Aires",
-      "imageUrl": "/public/images/buenosAires.jpg",
-      "location": { "country": "Argentina", "city": "Buenos Aires" }
-    },
-    {
-      "name": "Dubai",
-      "imageUrl": "/public/images/dubai.jpg",
-      "location": { "country": "United Arab Emirates", "city": "Dubai" }
-    },
-    {
-      "name": "Berlin",
-      "imageUrl": "/public/images/berlin.jpg",
-      "location": { "country": "Germany", "city": "Berlin" }
-    },
-    {
-      "name": "Cape Town",
-      "imageUrl": "/public/images/capeTown.jpg",
-      "location": { "country": "South Africa", "city": "Cape Town" }
-    },
-    {
-      "name": "Moscow",
-      "imageUrl": "/public/images/moscow.jpg",
-      "location": { "country": "Russia", "city": "Moscow" }
-    }
-  ]
-  
+  {
+    "name": "New York",
+    "imageUrl": "/public/images/newYor",
+    "location": { "country": "USA", "city": "New York" }
+  },
+  {
+    "name": "Paris",
+    "imageUrl": "/public/images/paris.jpg",
+    "location": { "country": "France", "city": "Paris" }
+  },
+  {
+    "name": "Tokyo",
+    "imageUrl": "/public/images/tokio.jpg",
+    "location": { "country": "Japan", "city": "Tokyo" }
+  },
+  {
+    "name": "London",
+    "imageUrl": "/public/images/london.jpg",
+    "location": { "country": "United Kingdom", "city": "London" }
+  },
+  {
+    "name": "Sydney",
+    "imageUrl": "/public/images/sydney.jpg",
+    "location": { "country": "Australia", "city": "Sydney" }
+  },
+  {
+    "name": "Rome",
+    "imageUrl": "/public/images/roma.jpg",
+    "location": { "country": "Italy", "city": "Rome" }
+  },
+  {
+    "name": "San Francisco",
+    "imageUrl": "/public/images/sanFrancisco.jpg",
+    "location": { "country": "USA", "city": "San Francisco" }
+  },
+  {
+    "name": "Buenos Aires",
+    "imageUrl": "/public/images/buenosAires.jpg",
+    "location": { "country": "Argentina", "city": "Buenos Aires" }
+  },
+  {
+    "name": "Dubai",
+    "imageUrl": "/public/images/dubai.jpg",
+    "location": { "country": "United Arab Emirates", "city": "Dubai" }
+  },
+  {
+    "name": "Berlin",
+    "imageUrl": "/public/images/berlin.jpg",
+    "location": { "country": "Germany", "city": "Berlin" }
+  },
+  {
+    "name": "Cape Town",
+    "imageUrl": "/public/images/capeTown.jpg",
+    "location": { "country": "South Africa", "city": "Cape Town" }
+  },
+  {
+    "name": "Moscow",
+    "imageUrl": "/public/images/moscow.jpg",
+    "location": { "country": "Russia", "city": "Moscow" }
+  }
+]
