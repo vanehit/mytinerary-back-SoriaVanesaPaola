@@ -3,7 +3,21 @@ const CityModel = require('../models/cityModel');
 const CityController = {
   getAllCities: async (req, res) => {
     try {
-      const cities = await CityModel.find();
+      const { search } = req.query; // obtenemos la búsqueda del query string
+  
+      let cities;
+  
+      if (search) {
+        const regexSearch = new RegExp(`^${search}$`, 'i'); // Búsqueda exacta (insensible a mayúsculas y minúsculas)
+  
+        cities = await CityModel.find({
+          name: regexSearch
+        });
+      } else {
+        // Si no obtenemos todas las ciudades
+        cities = await CityModel.find();
+      }
+  
       res.json(cities);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -13,7 +27,7 @@ const CityController = {
   //Buscamos una ciudad por su ID y la devuelve como respuesta JSON
   getCityById: async (req, res) => {
     try {
-      const city = await CityModel.findById(req.params._id); 
+      const city = await CityModel.findById(req.params._id);
       if (!city) {
         return res.status(404).json({ error: 'City not found' }); 
       }
@@ -27,17 +41,18 @@ const CityController = {
   createCity: async (req, res) => {
     try {
       const newCity = await CityModel.create(req.body);
-      res.status(201).json(newCity);
+      res.status(201).json({ success: true, message: "City added successfully", city: newCity });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ success: false, message: "Failed to add city", error: error.message });
     }
   },
+  
 
   //Actualizamos una ciudad existente por su ID utilizando los datos proporcionados 
   updateCity: async (req, res) => {
     try {
       const updatedCity = await CityModel.findByIdAndUpdate(
-        req.params._id, 
+        req.params._id,
         req.body,
         { new: true }
       );

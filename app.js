@@ -14,6 +14,9 @@ app.use(cors());
 // Configuración para servir archivos estáticos
 app.use(express.static('public'));
 
+//indicamos que podemos recibir datos json en la solicitud
+app.use(express.json())
+
 connectDB(); // Llamamos a la función de conexión
 
 app.use(cityRoutes);// Agregamos el enrutador de ciudades
