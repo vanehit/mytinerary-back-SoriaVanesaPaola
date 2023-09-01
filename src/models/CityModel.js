@@ -17,6 +17,9 @@ const citySchema = new Schema({
       type: String,
     },
   },
+  population: {
+    type: Number, 
+  },
 });
 
 const CityModel = model('cityModel', citySchema);
