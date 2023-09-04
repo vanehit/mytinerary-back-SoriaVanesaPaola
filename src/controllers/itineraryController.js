@@ -13,12 +13,14 @@ const ItineraryController = {
   getItinerariesByCity: async (req, res) => {
     try {
       const cityId = req.params._id; 
+  
       const itineraries = await Itinerary.find({ city: cityId });
       res.json(itineraries);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   },
+  
   
   getItineraryById: async (req, res) => {
     try {
