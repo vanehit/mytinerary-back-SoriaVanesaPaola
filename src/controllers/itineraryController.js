@@ -9,18 +9,21 @@ const ItineraryController = {
       res.status(500).json({ error: error.message });
     }
   },
-  
+    
+   
   getItinerariesByCity: async (req, res) => {
     try {
-      const cityId = req.params._id; 
-  
+      const cityId = req.params.cityId; 
+      console.log("Fetching itineraries for cityId:", cityId);
+
       const itineraries = await Itinerary.find({ city: cityId });
       res.json(itineraries);
     } catch (error) {
+      console.error("Error fetching itineraries by city:", error);
       res.status(500).json({ error: error.message });
     }
   },
-  
+
   
   getItineraryById: async (req, res) => {
     try {

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const itinerarySchema = new mongoose.Schema({
+const itinerarySchema = new Schema({
   title: {
     type: String,
     required: true
@@ -10,32 +10,32 @@ const itinerarySchema = new mongoose.Schema({
     required: true
   },
   city: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'City',
     required: true
   },
   author: {
-    type: String, // Cambia el tipo según corresponda
+    type: String, 
     required: true
   },
   price: {
-    type: Number, // Cambia el tipo según corresponda
+    type: Number, 
     required: true
   },
   duration: {
-    type: Number, // Cambia el tipo según corresponda
+    type: Number, 
     required: true
   },
   likes: {
-    type: Number, // Cambia el tipo según corresponda
+    type: Number, 
     required: true
   },
   hashtags: {
-    type: [String], // Cambia el tipo según corresponda
+    type: [String], 
     required: true
   }
 });
 
-const Itinerary = mongoose.model('Itinerary', itinerarySchema);
+const Itinerary = model('Itinerary', itinerarySchema);
 
 module.exports = Itinerary;
