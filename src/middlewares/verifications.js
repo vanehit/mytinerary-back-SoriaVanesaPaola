@@ -3,8 +3,8 @@ const Joi = require('joi');
 // Definimos el esquema Joi para validar los datos de registro
 const userSchema = Joi.object({
   username: Joi.string().alphanum().min(6).max(16).required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(6).required(),
+  email: Joi.string().email().alphanum().min(6).max(20).required(),
+  password: Joi.string().alphanum().min(6).max(16).required(),
 });
 
 // esta función es para validar los datos de registro
@@ -32,8 +32,6 @@ const registerUser = async (req, res, next) => {
       return res.status(400).json({ error: error.details[0].message });
     }
 
-    // Continuar con el proceso de registro si los datos son válidos
-    // ... (código para crear un nuevo usuario en la base de datos)
 
     // Responder con éxito
     return res.status(201).json({ message: 'User created successfully' });
