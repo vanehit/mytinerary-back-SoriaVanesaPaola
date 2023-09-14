@@ -49,36 +49,37 @@ router.post('/register', async (req, res, next) => {
 });
 
 router.post('/login', async (req, res, next) => {
-    try {
-      const { email, password } = req.body;
-  
-      // Buscar al usuario por su dirección de correo electrónico
-      const user = await User.findOne({ email });
-  
-      // Si no se encuentra el usuario, retornar un error
-      if (!user) {
-        return res.status(401).json({ message: 'Authentication failed. User not found.' });
-      }
-  
-      // Verificar la contraseña
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-  
-      if (!isPasswordValid) {
-        return res.status(401).json({ message: 'Authentication failed. Invalid password.' });
-      }
-  
-      // Genera un token JWT después de guardar el usuario
-    const secretKey = process.env.REACT_APP_JWT_SECRET_KEY; 
-    const token = jwt.sign({ userId: newUser._id }, secretKey, {
+  try {
+    const { email, password } = req.body;
+
+    // Buscar al usuario por su dirección de correo electrónico
+    const user = await User.findOne({ email });
+
+    // Si no se encuentra el usuario, retornar un error
+    if (!user) {
+      return res.status(401).json({ message: 'Authentication failed. User not found.' });
+    }
+
+    // Verificar la contraseña
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: 'Authentication failed. Invalid password.' });
+    }
+
+    // Genera un token JWT después de verificar la contraseña
+    const secretKey = process.env.REACT_APP_JWT_SECRET_KEY;
+    const token = jwt.sign({ userId: user._id }, secretKey, {
       expiresIn: '1h',
     });
-  
-      res.status(200).json({ message: 'Authentication successful', token });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
-  });
+
+    res.status(200).json({ message: 'Authentication successful', token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 
 
 
