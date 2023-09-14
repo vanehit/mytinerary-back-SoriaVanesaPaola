@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwtSecret = process.env.REACT_APP_JWT_SECRET_KEY;
 
 function authenticateToken(req, res, next) {
   const token = req.headers.authorization;
@@ -7,7 +7,7 @@ function authenticateToken(req, res, next) {
     return res.status(401).json({ message: 'Unauthorized access. You must log in.' });
   }
 
-  jwt.verify(token, 'tu_secreto', (err, user) => {
+  jwt.verify(token, jwtSecret, (err, user) => {
     if (err) {
       return res.status(403).json({ message: 'Invalid or expired token.' });
     }

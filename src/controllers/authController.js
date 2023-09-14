@@ -67,7 +67,7 @@ const signIn = async (req, res) => {
     }
 
     // Generar un token JWT después de la autenticación
-    const token = jwt.sign({ userId: newUser._id }, process.env.REACT_APP_JWT_SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, process.env.REACT_APP_JWT_SECRET_KEY, { expiresIn: '1h' });
 
     res.status(200).json({ message: 'Authentication successful', token });
 
