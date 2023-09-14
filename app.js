@@ -42,6 +42,10 @@ app.get('/get-secret-key', (req, res) => {
   res.json({ secretKey });
 });
 
+// Aumentar el límite de carga máxima
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`The server is running on port: ${port}`);

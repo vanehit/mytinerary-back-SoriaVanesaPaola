@@ -5,6 +5,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt'); 
+const { authenticateToken } = require('../middlewares/authenticated');
 
 
 const router = express.Router();
@@ -80,7 +81,10 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-
+router.get('/Protected-route', authenticateToken, (req, res) => {
+  // El usuario está autenticado y puede acceder a esta ruta
+  res.json({ message: 'Welcome, authenticated user' });
+});
 
 
 
